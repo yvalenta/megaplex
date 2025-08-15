@@ -11,6 +11,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
-  resources :pages, only: [:index], export: true do
+  resources :pages, only: [:index], export: true
+
+  namespace :api do
+    resources :products, only: [:index], export: true, as: :products
   end
 end
