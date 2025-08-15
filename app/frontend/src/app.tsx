@@ -5,15 +5,20 @@ import { Header } from "./components/header";
 import { Content } from "./components/content";
 import { Products } from "./pages/products";
 import { Footer } from "./components/footer";
+import  { Navbar } from "./layout/navbar";
 
 export const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <BrowserRouter>
         <Routes>
-          <Route path="/pages" element={<Content />} />
-          <Route path="/products" element={<Products />} />
+          <Route path="/" element={<Navbar />}>
+            <Route index element={<Content />} />
+            <Route path="/products" element={<Products />} />
+          </Route>
         </Routes>
+
+
       </BrowserRouter>
     </QueryClientProvider>
 )
