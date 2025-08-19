@@ -1,6 +1,8 @@
 import React from 'react'
 import { useQuery } from "@tanstack/react-query";
 import {Link} from "react-router-dom"
+import {useMutation} from "@tanstack/react-query";
+import {destroy} from "@rails/request.js";
 
 type Product = {
   id: number,
@@ -11,14 +13,25 @@ type Product = {
 }
 
 export const Products = () => {
-  const {isPending, data: products, error} = useQuery({
+  const {isPending, data: products, error, refetch} = useQuery({
     queryKey: ['products'],
     queryFn: () => fetch('/api/products').then(res => res.json(),),
+  })
+
+  const mutation = useMutation({
+    mutationFn: (data: Product) => {
+      console.log(data)
+      return destroy(`/api/products/${data.id}`)
+    },
+    onSuccess: () => {
+      refetch()
+    }
   })
 
   if (isPending) return 'Loading...'
 
   if (error) return 'An error has occurred: ' + error.message
+
 
   console.log(products)
 
@@ -30,6 +43,7 @@ export const Products = () => {
         <th scope="col" className="px=6 py-3">Description</th>
         <th scope="col" className="px-6 py-3">Public Price</th>
         <th scope="col" className="px-6 py-3">Client Price</th>
+        <th scope="col" className="px-6 py-3">Actions</th>
       </tr>
       </thead>
       <tbody>
@@ -39,6 +53,9 @@ export const Products = () => {
           <td scope="row" className="px-6 py-4">{product.description}</td>
           <td scope="row" className="px-6 py-4">{product.public_price}</td>
           <td scope="row" className="px-6 py-4">{product.client_price}</td>
+          <td scope="row" className="px-6 py-4">Show</td>
+          <td scope="row" className="px-6 py-4"><Link to={`/products/${product.id}`}>Edit</Link></td>
+          <td scope="row" className="px-6 py-4"><button onClick={() => mutation.mutate(product)}>Delete</button></td>
         </tr>
       ))}
       </tbody>
