@@ -1,5 +1,6 @@
 import React from 'react'
 import { useQuery } from "@tanstack/react-query";
+import {Link} from "react-router-dom"
 
 type Product = {
   id: number,
@@ -42,6 +43,8 @@ export const Products = () => {
       ))}
       </tbody>
     </table>
+    <br/>
+    <Link to="/products/new" className="bg-gray-300 w-sm-block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Create Product</Link>
   </div>
 
     }

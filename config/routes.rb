@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "pages#index"
   get "/products" => "pages#index"
+  get "/products/new" => "pages#index"
 
 
   resources :pages, only: [:index], export: true

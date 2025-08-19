@@ -6,6 +6,7 @@ import { Content } from "./components/content";
 import { Products } from "./pages/products";
 import { Footer } from "./components/footer";
 import  { Navbar } from "./layout/navbar";
+import {CreateProduct}  from "./pages/products/new";
 
 export const App = () => {
   return (
@@ -15,6 +16,7 @@ export const App = () => {
           <Route path="/" element={<Navbar />}>
             <Route index element={<Content />} />
             <Route path="/products" element={<Products />} />
+            <Route path="/products/new" element={<CreateProduct />} />
           </Route>
         </Routes>
 
