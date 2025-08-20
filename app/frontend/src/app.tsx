@@ -8,6 +8,9 @@ import { Footer } from "./components/footer";
 import  { Navbar } from "./layout/navbar";
 import {CreateProduct}  from "./pages/products/new";
 import { EditProduct } from "./pages/products/edit";
+import { Clients } from "./pages/clients";
+import { CreateClient } from "./pages/clients/new";
+import { EditClient } from "./pages/clients/edit";
 
 export const App = () => {
   return (
@@ -19,6 +22,9 @@ export const App = () => {
             <Route path="/products" element={<Products />} />
             <Route path="/products/new" element={<CreateProduct />} />
             <Route path="/products/:id" element={<EditProduct />} />
+            <Route path="/clients" element={<Clients />} />
+            <Route path="/clients/new" element={<CreateClient />} />
+            <Route path="/clients/:id" element={<EditClient />} />
           </Route>
         </Routes>
 

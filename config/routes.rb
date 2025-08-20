@@ -14,10 +14,14 @@ Rails.application.routes.draw do
   get "/products" => "pages#index"
   get "/products/new" => "pages#index"
   get "/products/:id" => "pages#index"
+  get "/clients" => "pages#index"
+  get "/clients/new" => "pages#index"
+  get "/clients/:id" => "pages#index"
 
   resources :pages, only: [:index], export: true
 
   namespace :api do
     resources :products, export: true, as: :products
+    resources :clients, export: true, as: :clients
   end
 end
