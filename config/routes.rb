@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   get "/clients" => "pages#index"
   get "/clients/new" => "pages#index"
   get "/clients/:id" => "pages#index"
+  get "/gifs" => "pages#index"
 
   resources :pages, only: [:index], export: true
 

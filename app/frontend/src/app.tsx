@@ -11,6 +11,7 @@ import { EditProduct } from "./pages/products/edit";
 import { Clients } from "./pages/clients";
 import { CreateClient } from "./pages/clients/new";
 import { EditClient } from "./pages/clients/edit";
+import {Gifs} from "@/pages/gifs/index.js";
 
 export const App = () => {
   return (
@@ -25,6 +26,7 @@ export const App = () => {
             <Route path="/clients" element={<Clients />} />
             <Route path="/clients/new" element={<CreateClient />} />
             <Route path="/clients/:id" element={<EditClient />} />
+            <Route path="/gifs" element={<Gifs />} />
           </Route>
         </Routes>
 
